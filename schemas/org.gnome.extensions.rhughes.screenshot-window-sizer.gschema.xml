@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist>
+
+  <schema path="/org/gnome/shell/extensions/hughsie/screenshot-window-sizer/" id="org.gnome.extensions.hughsie.screenshot-window-sizer">
+    <key type="as" name="cycle-screenshot-sizes">
+      <default><![CDATA[['<Alt><Control>s']]]></default>
+      <summary>Cycle Screenshot Sizes</summary>
+    </key>
+  </schema>
+</schemalist>
