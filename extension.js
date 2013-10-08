@@ -103,7 +103,7 @@ function cycleScreenshotSizes(display, screen, window, binding) {
     let newWidth, newHeight;
     [newWidth, newHeight] = SIZES[newIndex];
     if (newWidth > workArea.width || newHeight > workArea.height)
-        newIndex = 0;
+        [newWidth, newHeight] = SIZES[0];
 
     // Push the window onscreen if it would be resized offscreen
     let newX = outerRect.x;
