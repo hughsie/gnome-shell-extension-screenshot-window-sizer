@@ -1,7 +1,6 @@
 /* Screenshot Window Sizer for Gnome Shell
  *
  * Copyright (c) 2013 Owen Taylor <otaylor@redhat.com>
- * Copyright (c) 2013 Richard Hughes <richard@hughsie.com>
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -85,12 +84,6 @@ function cycleScreenshotSizes(display, screen, window, binding) {
 
     for (let i = 0; i < SIZES.length; i++) {
         let [width, height] = SIZES[i];
-
-        // ignore sizes bigger than the workArea
-        if (width > workArea.width || height > workArea.height)
-            continue;
-
-        // get the best initial window size
         let error = Math.abs(width - outerRect.width) + Math.abs(height - outerRect.height);
         if (nearestIndex == null || error < nearestError) {
             nearestIndex = i;
@@ -98,12 +91,13 @@ function cycleScreenshotSizes(display, screen, window, binding) {
         }
     }
 
-    // get the next size up or down from ideal
-    let newIndex = (nearestIndex + (backwards ? -1 : 1)) % SIZES.length;
     let newWidth, newHeight;
-    [newWidth, newHeight] = SIZES[newIndex];
-    if (newWidth > workArea.width || newHeight > workArea.height)
-        [newWidth, newHeight] = SIZES[0];
+    while (true) {
+        let newIndex = (nearestIndex + (backwards ? -1 : 1) + SIZES.length) % SIZES.length;
+        [newWidth, newHeight] = SIZES[newIndex];
+        if ((newWidth <= workArea.width && newHeight <= workArea.height) || newIndex == 0)
+            break;
+    }
 
     // Push the window onscreen if it would be resized offscreen
     let newX = outerRect.x;
