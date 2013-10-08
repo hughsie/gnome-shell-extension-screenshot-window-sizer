@@ -92,8 +92,9 @@ function cycleScreenshotSizes(display, screen, window, binding) {
     }
 
     let newWidth, newHeight;
+    let newIndex = nearestIndex;
     while (true) {
-        let newIndex = (nearestIndex + (backwards ? -1 : 1) + SIZES.length) % SIZES.length;
+        newIndex = (newIndex + (backwards ? -1 : 1) + SIZES.length) % SIZES.length;
         [newWidth, newHeight] = SIZES[newIndex];
         if ((newWidth <= workArea.width && newHeight <= workArea.height) || newIndex == 0)
             break;
