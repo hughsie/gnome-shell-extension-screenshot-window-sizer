@@ -35,7 +35,7 @@ function hideMessage() {
     text = null;
 }
 
-function flashMessage(message) {
+function flashMessage(message, width, height, x, y) {
     if (!text) {
         text = new St.Label({ style_class: 'screenshot-sizer-message' });
         Main.uiGroup.add_actor(text);
@@ -46,9 +46,8 @@ function flashMessage(message) {
 
     text.opacity = 255;
 
-    let monitor = Main.layoutManager.primaryMonitor;
-    text.set_position(Math.floor(monitor.width / 2 - text.width / 2),
-                      Math.floor(monitor.height / 2 - text.height / 2));
+    text.set_position(Math.floor((width / 2 - text.width / 2) + x),
+                      Math.floor((height / 2 - text.height / 2) + y));
 
     Tweener.addTween(text,
                      { opacity: 0,
@@ -120,7 +119,7 @@ function cycleScreenshotSizes(display, screen, window, binding) {
     if (Math.abs(actualNumerator - 16) > 0.01)
         message += ' (%.2f:9)'.format(actualNumerator);
 
-    flashMessage(message);
+    flashMessage(message, newOuterRect.width, newOuterRect.height, newX, newY);
 }
 
 let _settings;
