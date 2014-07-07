@@ -1,0 +1,13 @@
+ChangeLog
+Makefile
+Makefile.in
+aclocal.m4
+autom4te.cache
+config
+config.log
+config.status
+configure
+gnome-shell-extension-screenshot-window-sizer-2.0.tar.xz
+m4
+org.gnome.shell.extensions.screenshot-window-sizer.gschema.valid
+zip-file

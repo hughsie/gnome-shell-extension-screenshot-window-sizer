@@ -1,9 +1,9 @@
 {
-   "shell-version": ["3.8", "3.10", "3.12"],
+   "shell-version": ["3.8", "3.10", "3.12", "3.14"],
    "uuid": "screenshot-window-sizer@hughsie.github.com",
    "name": "Screenshot Window Sizer",
    "description": "Resize windows for GNOME Software screenshots",
    "url": "https://github.com/hughsie/gnome-shell-extension-screenshot-window-sizer",
-   "settings-schema": "org.gnome.extensions.hughsie.screenshot-window-sizer",
-   "version": 1
+   "settings-schema": "org.gnome.extensions.screenshot-window-sizer",
+   "version": 3
 }

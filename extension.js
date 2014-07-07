@@ -1,6 +1,7 @@
 /* Screenshot Window Sizer for Gnome Shell
  *
  * Copyright (c) 2013 Owen Taylor <otaylor@redhat.com>
+ * Copyright (c) 2014 Richard Hughes <richard@hughsie.com>
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -26,7 +27,7 @@ const Main = imports.ui.main;
 const ExtensionUtils = imports.misc.extensionUtils;
 const Tweener = imports.ui.tweener;
 
-const SETTINGS_SCHEMA = 'org.gnome.extensions.hughsie.screenshot-window-sizer';
+const SETTINGS_SCHEMA = 'org.gnome.shell.extensions.screenshot-window-sizer';
 
 let text, button;
 
@@ -58,6 +59,7 @@ function flashMessage(message, width, height, x, y) {
 
 let SIZES = [
     [624, 351],
+    [752, 423],
     [800, 450],
     [1024, 576],
     [1200, 675],
