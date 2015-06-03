@@ -75,7 +75,7 @@ function cycleScreenshotSizes(display, screen, window, binding) {
         window.unmaximize(Meta.MaximizeFlags.HORIZONTAL | Meta.MaximizeFlags.VERTICAL);
 
     let workArea = window.get_work_area_current_monitor();
-    let outerRect = window.get_outer_rect();
+    let outerRect = window.get_frame_rect();
 
     // Find the nearest 16:9 size for the current window size
     let nearestIndex;
@@ -109,7 +109,7 @@ function cycleScreenshotSizes(display, screen, window, binding) {
 
     window.move_resize_frame(true, newX, newY, newWidth, newHeight);
 
-    let newOuterRect = window.get_outer_rect();
+    let newOuterRect = window.get_frame_rect();
     let message = newOuterRect.width + 'x' + newOuterRect.height;
 
     // The new size might have been constrained by geometry hints (e.g. for
@@ -149,7 +149,7 @@ function enable() {
     Main.wm.addKeybinding('cycle-screenshot-sizes',
                           getSettings(),
                           Meta.KeyBindingFlags.PER_WINDOW | Meta.KeyBindingFlags.REVERSES,
-                          Shell.KeyBindingMode.NORMAL,
+                          Shell.ActionMode.NORMAL,
                           cycleScreenshotSizes);
 }
 
